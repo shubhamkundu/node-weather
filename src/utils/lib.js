@@ -21,7 +21,9 @@ const self = module.exports = {
     copyPropsFromObj: (propArr, obj) => {
         const newObj = {};
         for (const prop of propArr) {
-            newObj[prop] = obj[prop];
+            if (obj.hasOwnProperty(prop)) {
+                newObj[prop] = obj[prop];
+            }
         }
         return newObj;
     }
