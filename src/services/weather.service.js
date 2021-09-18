@@ -4,7 +4,7 @@ const weatherConfig = require('./../config/config').weather;
 module.exports = () => ({
     getWeatherByCityName: (cityName) => new Promise(async (resolve, reject) => {
         try {
-            const url = `${weatherConfig.url}/weather?q=${cityName}&appid=${weatherConfig.apiKey}`;
+            const url = `${weatherConfig.url}/forecast?q=${cityName}&appid=${weatherConfig.apiKey}`;
             try {
                 const result = await axios.get(url);
                 resolve({ status: 'success', cityName, data: result.data });
@@ -26,7 +26,7 @@ module.exports = () => ({
 
             // const cityNames = ['kolkata', 'mumbai1', 'delhi'];
 
-            const url = `${weatherConfig.url}/weather?appid=${weatherConfig.apiKey}`;
+            const url = `${weatherConfig.url}/forecast?appid=${weatherConfig.apiKey}`;
             const promises = [];
             cityNames.forEach(cityName => {
                 promises.push(axios.get(`${url}&q=${cityName}`));
